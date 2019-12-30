@@ -1,0 +1,22 @@
+---
+title: Boy Scout Refactoring
+date: 2019-03-30
+tags: [refactoring]
+---
+
+A long time ago at a summer camp far, far away, a young boy is eating some chili by a campfire. It's been a long day full of exciting classes and lots of hiking, and he is happy to finally sit for once and enjoy a meal with some friends. After finishing the meal, he sets his bowl on the ground and grabs something out of his tent, only to find one of the older boys waiting just outside. "What's this?" The older boy is holding a bowl and scowling. "It's the bowl I was using to eat" replies the younger, knowing full well what's about to be said.
+
+## Leave the Campsite Better Than You Found It
+If you work with software, there's a very high chance that you deal with legacy at some point in your day. We all like to think of ourselves as greenfield cowboys barreling towards new solutions and radical ideas. However, the reality is that most of us are tasked with maintaining existing, profitable (!!!) systems and making changes when required. Most requests for large-scale rewrites are shot down almost immediately, since the system is working. The people authorizing those sort of decisions don't have to spend their workday inside the system, so no amount of charting and code evidence will convince someone to take that risk. However, as a developer you have authority to edit files. While you're fixing a bug or adjusting something, why not spend a little time to clean things up? This is what I call Boy Scout Refactoring, and it's helped to gradually create a more hospitable codebase. I am not going to spend a lot of time talking about the "how" here (there are many great works about refactoring out there), but I am going to mention some things to watch out for when you refactor in this way.
+
+## Component Testing
+For this method of refactoring to work like a charm, you need to have fairly intensive tests set up (you do have unit tests, right?). To make things easier on your QA folks, always set up a new test for features and check your tests for bugfixes. That way, after you've done your work and cleaned up the campsite a little, you should be confident that you didn't inadvertently break something. Then, make sure to let people know that there is new code and the area surrounding the fix should also be scrutinized. This could mean the whole module in a CRM, that specific use-case or execution path, whatever, but this way you will be able to catch anything that may have broken before regression.
+
+## Clear Diffs
+This is an issue that I'm still trying to work through. Normally the changes are slight and don't add noise to your diff, but for some larger features it may be helpful to decide on a commit prefix for refactor commits. Then your reviewer will have an easier time separating the fix from cleanup work, though it requires them to look at the commit history. Comments can be helpful too, something along the lines of `// Refactored with ticket X`. This is something you may have to speak with your reviewer about.
+
+## Function Decomposition
+We all have that _one_ function. The monstrosity that everyone hopes will never break, so they don't have to touch it. Whenever I have to fix something that lives in one of those 2K+ LoC beasts, I always try to break the specific area I'm working with into a helper function. If you can decompose the whole thing (say you have some free time), by all means, do it. People besides your reviewer will thank you. Breaking out that specific area, however, provides a clearer diff and allows you to really start to understand what the Big Function is doing. Try your best to identify the whole block that is related, and make sure you aren't overwriting/not overwriting variables in function scope that will affect things down the line. I had an issue with this last week, refactoring a large pricing function that used `w` as a function-wide weight variable. I had to have my helpers return both pricing information and a new weight to be reused.
+
+## Conclusion
+Refactoring in-place while you work on features or bugfixes provides a reliable, incremental way to breathe life into codebases suffering with a bad case of entropy. There are a few things to watch out for with this approach, like signal-to-noise ratio in your diffs and accidentially introducing new bugs.
