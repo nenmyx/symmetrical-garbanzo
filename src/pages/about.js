@@ -23,7 +23,7 @@ class About extends React.Component {
         <p>
           This site is still WIP, my front-end skills need some ironing out.
           If you want to get in touch, feel free to talk to me on&nbsp;
-          <OutboundLink href="https://twitter.com/nenmyx" target="_blank" rel="noopener noreferrer">Twitter</OutboundLink>!
+	  <OutboundLink href="https://fediverse.nenmyx.dev/@nenmyx" target="_blank" rel="noopener noreferrer me">Mastodon</OutboundLink>!
         </p>
         <h2>Privacy</h2>
         <p>
