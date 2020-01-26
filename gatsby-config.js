@@ -21,17 +21,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography.js`
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GOOGLE_TRACKING_ID,
-        head: true,
-        anonymize: true,
-        respectDNT: true,
-        cookieDomain: "nenmyx.dev"
-      },
-    },
     `gatsby-plugin-emotion`,
     `gatsby-transformer-remark`,
-  ],
+  ]
 }

@@ -13,6 +13,7 @@ export default ({ data }) => (
         timeToRead={node.timeToRead}
         body={node.excerpt}
         to={node.fields.slug}
+        key={node.id}
       />
     ))}
   </Layout>
