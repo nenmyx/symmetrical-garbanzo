@@ -19,7 +19,6 @@
     "typography": "^0.16.19",
     "typography-theme-doelger": "^0.16.19"
   },
-  "devDependencies": {},
   "scripts": {
     "develop": "gatsby develop",
     "start": "npm run develop",
