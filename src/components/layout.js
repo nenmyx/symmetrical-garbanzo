@@ -1,6 +1,6 @@
 import React from "react"
 import { rhythm } from "../utils/typography"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import { graphql, StaticQuery, Link } from "gatsby"
 
 // Inline component for nav links

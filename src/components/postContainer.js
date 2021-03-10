@@ -1,7 +1,7 @@
 // TODO: Display post tags somewhere
 import React from "react"
 import { rhythm } from "../utils/typography"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import { Link } from "gatsby"
 
 export default ( props ) => (
