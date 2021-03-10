@@ -32,9 +32,7 @@
     "url": "git+https://github.com/nenmyx/symmetrical-garbanzo.git"
   },
   "engines": {
-    {
         "node": ">=14.16.0"
-    }
   },
   "keywords": [
     "gatsby"
